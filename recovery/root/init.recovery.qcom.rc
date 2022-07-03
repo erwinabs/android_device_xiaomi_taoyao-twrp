@@ -15,15 +15,12 @@ on fs
     # Set fscklog permission
     chown root system /dev/fscklogs/log
     chmod 0770 /dev/fscklogs/log    
-    start set_permissive
-    start boot-hal-1-1
 
 on property:twrp.modules.loaded=true
     # Load ADSP firmware for PMIC
     wait /sys/kernel/boot_adsp/boot
     write /sys/kernel/boot_adsp/boot 1
     wait /sys/class/power_supply/battery
-    start health-hal-2-1
 
 service set_permissive /system/bin/set_permissive.sh
     user root
@@ -31,3 +28,17 @@ service set_permissive /system/bin/set_permissive.sh
     disabled
     oneshot 
     seclabel u:r:recovery:s0
+
+service overrideprops /system/bin/overrideprops.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+on boot
+    start boot-hal-1-1
+    start health-hal-2-1
+    start set_permissive
+    start overrideprops
+
