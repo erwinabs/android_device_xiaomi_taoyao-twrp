@@ -5,7 +5,6 @@ on init
     # Create location for fs_mgr to store abbreviated output from filesystem
     # checker programs.
     mkdir /dev/fscklogs 0770 root system
-    start set_permissive
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -15,11 +14,9 @@ on fs
     mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
     # Set fscklog permission
     chown root system /dev/fscklogs/log
-    chmod 0770 /dev/fscklogs/log
+    chmod 0770 /dev/fscklogs/log    
+    start set_permissive
     start boot-hal-1-1
-
-on boot
-    setprop sys.usb.config mtp,adb
 
 on property:twrp.modules.loaded=true
     # Load ADSP firmware for PMIC
@@ -34,4 +31,3 @@ service set_permissive /system/bin/set_permissive.sh
     disabled
     oneshot 
     seclabel u:r:recovery:s0
-
