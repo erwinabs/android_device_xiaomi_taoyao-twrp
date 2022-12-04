@@ -22,6 +22,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # Enable virtual A/B OTA
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
+# Configure SDCard replacement functionality
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
@@ -96,7 +99,7 @@ PLATFORM_VERSION := 16.1.0
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 
-TW_LOAD_VENDOR_MODULES := "goodix_core.ko adsp_loader_dlkm.ko qti_battery_charger_main_odin.ko xiaomi_touch.ko"
+TW_LOAD_VENDOR_MODULES := "goodix_core.ko adsp_loader_dlkm.ko qti_battery_charger_main_odin.ko xiaomi_touch.ko focaltech_touch.ko"
 
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
