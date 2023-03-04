@@ -16,6 +16,12 @@
 
 LOCAL_PATH := device/xiaomi/taoyao
 
+# fscrypt policy
+TW_USE_FSCRYPT_POLICY := 2
+
+# Inherit from common AOSP config
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
@@ -60,8 +66,12 @@ AB_OTA_POSTINSTALL_CONFIG += \
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
+    bootctrl.lahaina \
     bootctrl.lahaina.recovery \
-    android.hardware.boot@1.1-impl-qti.recovery
+    android.hardware.boot@1.1-impl-qti \
+    android.hardware.boot@1.1-impl-qti.recovery \
+    android.hardware.boot@1.1-service \
+
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
@@ -81,9 +91,10 @@ PRODUCT_PACKAGES += \
 # fastbootd
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
+    android.hardware.fastboot@1.0-impl-mock.recovery \
     fastbootd
-    
-# Soong namespaces
+
+  # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/qcom-caf/bootctrl \
@@ -100,6 +111,12 @@ PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 
 TW_LOAD_VENDOR_MODULES := "goodix_core.ko adsp_loader_dlkm.ko qti_battery_charger_main_odin.ko xiaomi_touch.ko focaltech_touch.ko"
+
+# Vibrator
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+
+RECOVERY_BINARY_SOURCE_FILES += \
+    $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/vendor.qti.hardware.vibrator.service
 
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
