@@ -41,7 +41,7 @@ Works:
 - Backup/Restore
 - USB OTG
 - Touch
-
-Bugs:
-
 - Vibration 
+- CPU temperature
+- A/B partition functions
+- ADB SIDELOAD
