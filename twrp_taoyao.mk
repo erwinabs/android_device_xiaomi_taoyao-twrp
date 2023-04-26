@@ -27,5 +27,5 @@ $(call inherit-product, device/xiaomi/taoyao/device.mk)
 PRODUCT_DEVICE := taoyao
 PRODUCT_NAME := twrp_taoyao
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Mi 12 Lite 5G
+PRODUCT_MODEL := Xiaomi 12 Lite
 PRODUCT_MANUFACTURER := xiaomi
