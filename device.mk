@@ -87,7 +87,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/qcom-caf/bootctrl \
-    vendor/qcom/opensource/commonsys-intf/display
+#    vendor/qcom/opensource/commonsys-intf/display
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
@@ -99,19 +99,20 @@ PLATFORM_VERSION := 16.1.0
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 
-TW_LOAD_VENDOR_MODULES := "goodix_core.ko adsp_loader_dlkm.ko qti_battery_charger_main_odin.ko xiaomi_touch.ko focaltech_touch.ko"
 
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
-    libdisplayconfig.qti \
-    vendor.display.config@1.0 \
-    vendor.display.config@2.0 
+    libxml2 \
+    libandroidicu
+
+#PRODUCT_COPY_FILES += \
+#    $(OUT_DIR)/target/product/$(PRODUCT_RELEASE_NAME)/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libcuuc.so
+
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
-    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/libdisplayconfig.qti.so \
-    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
-    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so
+    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
+
 
 PRODUCT_PACKAGES += \
     qcom_decrypt \

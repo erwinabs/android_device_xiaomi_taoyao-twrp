@@ -33,4 +33,5 @@
 /persist_image      emmc    /dev/block/bootdevice/by-name/persist                flags=display="Persist Image";backup=1;flashimg=1
 
 # Removable storage
-/usbstorage    vfat    /dev/block/sdg1                    /dev/block/sdg         flags=fsflags=utf8;display="USB Storage";storage;wipeingui;removable
+/usbotg           auto    /dev/block/sdg1      /dev/block/sdg             flags=fsflags=utf8;display="USB-Storage";storage;wipeingui;removable
+
