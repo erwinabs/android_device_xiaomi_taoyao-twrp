@@ -1,3 +1,6 @@
+# Battery Property
+ro.charger.enable_suspend=1
+
 # Crypto
 ro.crypto.dm_default_key.options_format.version=2
 ro.crypto.volume.metadata.method=dm-default-key

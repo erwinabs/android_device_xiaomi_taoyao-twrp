@@ -40,8 +40,11 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a75
 # APEX
 DEXPREOPT_GENERATE_APEX_IMAGE := true
 
+# Asserts
+TARGET_OTA_ASSERT_DEVICE := taoyao
+
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := taoyao
+TARGET_BOOTLOADER_BOARD_NAME := lahaina
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
@@ -134,6 +137,9 @@ TW_FRAMERATE := 60
 TW_USE_FSCRYPT_POLICY := 2
 TW_NO_SCREEN_BLANK := true
 TW_BACKUP_EXCLUSIONS := /data/fonts
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
+TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone17/temp"
+TW_DEFAULT_EXTERNAL_STORAGE := true
 
 # TWRP Debug Flags
 # TWRP_EVENT_LOGGING := true
