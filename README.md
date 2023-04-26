@@ -41,7 +41,8 @@ Works:
 - Backup/Restore
 - USB OTG
 - Touch
+- Vibration 
 
 Bugs:
+- You tell me
 
-- Vibration 
