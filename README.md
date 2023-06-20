@@ -43,5 +43,4 @@ Works:
 - Touch
 
 Bugs:
-
-- Vibration 
+- uknows
